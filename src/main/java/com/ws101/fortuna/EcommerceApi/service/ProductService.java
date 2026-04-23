@@ -21,16 +21,17 @@ public class ProductService {
 
     // Constructor
     public ProductService() {
-        products.add(new Product(nextId++, "Minimal Watch", "Simple watch", 985.0, "Watch", 10, "img1.jpg"));
-        products.add(new Product(nextId++, "Retro Watch", "Vintage style", 1020.0, "Watch", 8, "img2.jpg"));
-        products.add(new Product(nextId++, "Classic Watch", "Classic leather", 1800.0, "Watch", 5, "img3.jpg"));
-        products.add(new Product(nextId++, "Smart Watch", "Modern smartwatch", 3000.0, "Smart", 15, "img4.jpg"));
-        products.add(new Product(nextId++, "Fitness Watch", "Health tracking", 2200.0, "Smart", 12, "img5.jpg"));
-        products.add(new Product(nextId++, "Digital Watch", "LED display", 1500.0, "Digital", 20, "img6.jpg"));
-        products.add(new Product(nextId++, "Sports Watch", "Durable sports watch", 1200.0, "Sports", 18, "img7.jpg"));
-        products.add(new Product(nextId++, "Luxury Watch", "Premium design", 5000.0, "Luxury", 3, "img8.jpg"));
-        products.add(new Product(nextId++, "Casual Watch", "Everyday wear", 900.0, "Casual", 25, "img9.jpg"));
-        products.add(new Product(nextId++, "Elegant Watch", "Formal style", 2700.0, "Elegant", 6, "img10.jpg"));
+        products.add(new Product(nextId++, "Minimal Watch", "Simple watch", 985.0, "Minimal Watch", 10, "img1.jpg"));
+        products.add(new Product(nextId++, "Retro Watch", "Vintage style", 1020.0, "Minimal Watch", 8, "img2.jpg"));
+        products.add(new Product(nextId++, "Classic Watch", "Classic leather", 1800.0, "Minimal Watch", 5, "img3.jpg"));
+        products.add(new Product(nextId++, "Elegant Watch", "Formal style", 2700.0, "Minimal Watch", 6, "img10.jpg"));
+        products.add(new Product(nextId++, "Matte Smart Watch", "Modern smartwatch", 3000.0, "Smart Watch", 15, "img4.jpg"));
+        products.add(new Product(nextId++, "Women's Smart Watch", "Everyday wear", 2500.0, "Smart Watch", 25, "img9.jpg"));
+        products.add(new Product(nextId++, "Men's Sports Watch", "Durable sports watch", 1200.0, "Sports Watch", 18, "img7.jpg"));
+        products.add(new Product(nextId++, "Elegant Sports Watch", "Premium design", 5000.0, "Sports Watch", 3, "img8.jpg"));
+        products.add(new Product(nextId++, "Digital Watch", "LED display", 1500.0, "Digital Watch", 20, "img6.jpg"));
+        products.add(new Product(nextId++, "Fitness Watch", "Health tracking", 2200.0, "Fitness Watch", 12, "img5.jpg"));
+
     }
 
     // GET all products
