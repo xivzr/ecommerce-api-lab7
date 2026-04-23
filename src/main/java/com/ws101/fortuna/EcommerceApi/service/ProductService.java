@@ -5,6 +5,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 // This tells Spring this is a service class
 @Service
@@ -75,14 +76,10 @@ public class ProductService {
         return products.removeIf(p -> p.getId().equals(id));
     }
 
-    // FILTER by category (example filter)
-    public List<Product> getProductsByCategory(String category) {
-        List<Product> filtered = new ArrayList<>();
-        for (Product p : products) {
-            if (p.getCategory().equalsIgnoreCase(category)) {
-                filtered.add(p);
-            }
-        }
-        return filtered;
+    // FILTER by category
+    public List<Product> filterByCategory(String category) {
+        return products.stream()
+                .filter(p -> p.getCategory().equalsIgnoreCase(category))
+                .collect(Collectors.toList());
     }
 }

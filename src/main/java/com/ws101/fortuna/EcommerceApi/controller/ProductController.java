@@ -6,6 +6,7 @@ import com.ws101.fortuna.EcommerceApi.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import jakarta.validation.Valid;
 
 import java.util.List;
 
@@ -21,6 +22,7 @@ public class ProductController {
 
     @Autowired
     private ProductService productService;
+
 
     // GET ALL PRODUCTS -200
     // Endpoint: GET /api/v1/products
@@ -42,26 +44,12 @@ public class ProductController {
         }
     }
 
-    // FILTER PRODUCTS
-    // Endpoint: GET /api/v1/products/filter?filterType=category&filterValue=Watch
-    @GetMapping("/filter")
-    public ResponseEntity<List<Product>> filterProducts(
-            @RequestParam String filterType,
-            @RequestParam String filterValue) {
-
-        if (filterType.equalsIgnoreCase("category")) {
-            return ResponseEntity.ok(productService.getProductsByCategory(filterValue)); //200
-        }
-
-        return ResponseEntity.badRequest().build();
-    }
-
     // CREATE PRODUCT - 201 created
     // Endpoint: POST /api/v1/products
     @PostMapping
-    public ResponseEntity<Product> createProduct(@RequestBody Product product) {
+    public ResponseEntity<Product> createProduct(@Valid @RequestBody Product product) {
         Product newProduct = productService.addProduct(product);
-        return ResponseEntity.status(200).body(newProduct); // 201 Created
+        return ResponseEntity.status(201).body(newProduct); // 201 Created
     }
 
     // UPDATE Create PRODUCT  //404 not found
@@ -99,8 +87,8 @@ public class ProductController {
         if (product.getCategory() != null) existing.setCategory(product.getCategory());
         if (product.getImageUrl() != null) existing.setImageUrl(product.getImageUrl());
 
-        if (product.getPrice() != 0) existing.setPrice(product.getPrice());
-        if (product.getStockQuantity() != 0) existing.setStockQuantity(product.getStockQuantity());
+        if (product.getPrice() != null ) existing.setPrice(product.getPrice());
+        if (product.getStockQuantity() != null) existing.setStockQuantity(product.getStockQuantity());
 
         return ResponseEntity.ok(existing);
     }
@@ -117,5 +105,14 @@ public class ProductController {
         } else {
             return ResponseEntity.notFound().build();
         }
+    }
+    //  FILTER PRODUCTS BY CATEGORY
+    // Endpoint: GET /api/v1/products/filter?category=Sports Watch
+    @GetMapping("/filter")
+    public ResponseEntity<List<Product>> filterProducts(
+            @RequestParam String category) {
+
+        List<Product> products = productService.filterByCategory(category);
+        return ResponseEntity.ok(products);
     }
 }

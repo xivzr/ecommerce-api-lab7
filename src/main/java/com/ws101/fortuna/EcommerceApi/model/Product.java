@@ -1,15 +1,34 @@
 package com.ws101.fortuna.EcommerceApi.model;
 
+import jakarta.validation.constraints.*;
+
 public class Product {
 
     // TASK 2.1: Product Fields
     private Long id;
-    private String name;
-    private String description;
-    private double price;
-    private String category;
-    private int stockQuantity;
-    private String imageUrl;
+
+
+        @NotBlank(message = "Product name is required")
+        @Size(min = 3, message = "Name must be at least 3 characters")
+        private String name;
+
+        private String description;
+
+        @NotNull(message = "Price is required")
+        @Positive(message = "Price must be positive")
+        private Double price;
+
+        @NotBlank(message = "Category is required")
+        private String category;
+
+        @NotNull(message = "Stock is required")
+        @Min(value = 0, message = "Stock must be non-negative")
+        private Integer stockQuantity;
+
+        private String imageUrl;
+
+        // getters and setters
+
 
     // TASK 2.2: Constructors
 
@@ -18,8 +37,8 @@ public class Product {
     }
 
     // Constructor with all fields
-    public Product(Long id, String name, String description, double price,
-                   String category, int stockQuantity, String imageUrl) {
+    public Product(Long id, String name, String description, Double price,
+                   String category, Integer stockQuantity, String imageUrl) {
         this.id = id;
         this.name = name;
         this.description = description;
@@ -55,11 +74,11 @@ public class Product {
         this.description = description;
     }
 
-    public double getPrice() {
+    public Double getPrice() {
         return price;
     }
 
-    public void setPrice(double price) {
+    public void setPrice(Double price) {
         this.price = price;
     }
 
@@ -71,11 +90,11 @@ public class Product {
         this.category = category;
     }
 
-    public int getStockQuantity() {
+    public Integer getStockQuantity() {
         return stockQuantity;
     }
 
-    public void setStockQuantity(int stockQuantity) {
+    public void setStockQuantity(Integer stockQuantity) {
         this.stockQuantity = stockQuantity;
     }
 
