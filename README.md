@@ -38,9 +38,9 @@ http://localhost:8080/api/v1/products
 
 ---
 
-## 📡 API Endpoint Reference
+##  API Endpoint Reference
 
-### 🔹 GET All Products
+###  GET All Products
 
 * *Method:* GET
 * *Path:* http://localhost:8080/api/v1/products
@@ -48,7 +48,7 @@ http://localhost:8080/api/v1/products
 * *Response:*
      * 200 OK (valid/working)
 
-### 🔹 GET Product by ID
+###  GET Product by ID
 
 * *Method:* GET
 * *Path:* http://localhost:8080/api/v1/products/{id}
@@ -58,7 +58,7 @@ http://localhost:8080/api/v1/products
   * 200 OK (valid/working)
   * 404 Not Found (product does not exist)
 
-### 🔹 CREATE Product
+###  CREATE Product
 
 * *Method:* POST
 * *Path:* /api/v1/products
@@ -67,7 +67,7 @@ http://localhost:8080/api/v1/products
 
   * 201 0K (valid/working)
 
-### 🔹 UPDATE Product 
+###  UPDATE Product 
 
 * *Method:* PUT
 * *Path:* /api/v1/products/{id}
@@ -79,7 +79,7 @@ http://localhost:8080/api/v1/products
   * 400 Bad Request
 
 
-### 🔹 PATCH Product (Partial Update)
+###  PATCH Product (Partial Update)
 
 * *Method:* PATCH
 * *Path:* /api/v1/products/{id}
@@ -89,7 +89,7 @@ http://localhost:8080/api/v1/products
   * 200 OK (valid/working)
   * 404 Not Found (product does not exist)
 
-### 🔹 DELETE Product
+###  DELETE Product
 
 * *Method:* DELETE
 * *Path:* /api/v1/products/{id}
