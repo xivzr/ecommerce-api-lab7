@@ -7,8 +7,21 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
+/**
+ * @author Khiara Espelimbergo
+ */
+
 // This tells Spring this is a service class
 @Service
+
+/**
+ * Service class for managing product operations.
+ * This class handles business logic for creating, retrieving, updating, deleting, and filtering products.
+ *
+ * Data is stored in-memory using a List, meaning all data will be lost when the application stops.
+ *
+ * Acts as an intermediary between the controller and data storage.
+ */
 public class ProductService {
 
     // This service uses a List<Product> as a temporary data storage.
@@ -36,9 +49,31 @@ public class ProductService {
     }
 
     // GET all products
+
+    /**
+     * Retrieves all products.
+     *
+     * @return a list of all products
+     *
+     * Example:
+     * GET /api/v1/products
+     */
+
     public List<Product> getAllProducts() {
         return products;
     }
+
+
+    /**
+     * Retrieves a product by its ID.
+     *
+     * @param id the ID of the product
+     * @return the product if found; otherwise null (mapped to 404 in controller)
+     * @throws NullPointerException if id is null
+     *
+     * Example:
+     * GET /api/v1/products/1
+     */
 
     // GET product by ID
     public Product getProductById(Long id) {
@@ -48,12 +83,37 @@ public class ProductService {
                 .orElse(null);
     }
 
+
+    /**
+     * Adds a new product.
+     *
+     * @param product the product to be added
+     * @return the created product with assigned ID
+     * @throws NullPointerException if product is null
+     *
+     * Example:
+     * POST /api/v1/products
+     */
+
     // CREATE new product
     public Product addProduct(Product product) {
         product.setId(nextId++);
         products.add(product);
         return product;
     }
+
+
+    /**
+     * Updates an existing product.
+     *
+     * @param id the ID of the product to update
+     * @param updatedProduct the updated product details
+     * @return the updated product if found; otherwise null
+     * @throws NullPointerException if id or updatedProduct is null
+     *
+     * Example:
+     * PUT /api/v1/products/1
+     */
 
     // UPDATE product
     public Product updateProduct(Long id, Product updatedProduct) {
@@ -71,11 +131,32 @@ public class ProductService {
         return null;
     }
 
+    /**
+     * Deletes a product by its ID.
+     *
+     * @param id the ID of the product to delete
+     * @return true if the product was deleted; false if not found
+     * @throws NullPointerException if id is null
+     *
+     * Example:
+     * DELETE /api/v1/products/1
+     */
     // DELETE product
     public boolean deleteProduct(Long id) {
         return products.removeIf(p -> p.getId().equals(id));
     }
 
+
+    /**
+     * Filters products by category.
+     *
+     * @param category the category to filter by
+     * @return a list of products matching the category
+     * @throws NullPointerException if category is null
+     *
+     * Example:
+     * GET /api/v1/products/category?category=Digital
+     */
     // FILTER by category
     public List<Product> filterByCategory(String category) {
         return products.stream()
