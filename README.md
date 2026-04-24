@@ -117,7 +117,7 @@ http://localhost:8080/api/v1/products
 ---
 
 ###  GET Product by ID
-
+g
 * *Method:* GET
 * *Request and Response:*
 
