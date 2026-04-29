@@ -1,5 +1,6 @@
 package com.ws101.fortuna.EcommerceApi.service;
 
+import com.ws101.fortuna.EcommerceApi.model.Category;
 import com.ws101.fortuna.EcommerceApi.model.Product;
 import org.springframework.stereotype.Service;
 
@@ -33,18 +34,24 @@ public class ProductService {
     // Counter for unique IDs
     private Long nextId = 1L;
 
+    private Category Minimal = new Category(1L, "Minimal Watch", "Minimal style", new ArrayList<>());
+    private Category Smart = new Category(2L, "Smart Watch", "Smart devices", new ArrayList<>());
+    private Category Sports = new Category(3L, "Sports Watch", "Sport use", new ArrayList<>());
+    private Category Digital = new Category(4L, "Digital Watch", "Digital display", new ArrayList<>());
+    private Category Fitness = new Category(5L, "Fitness Watch", "Health tracking", new ArrayList<>());
+
     // Constructor
     public ProductService() {
-        products.add(new Product(nextId++, "Minimal Watch", "Simple watch", 985.0, "Minimal Watch", 10, "img1.jpg"));
-        products.add(new Product(nextId++, "Retro Watch", "Vintage style", 1020.0, "Minimal Watch", 8, "img2.jpg"));
-        products.add(new Product(nextId++, "Classic Watch", "Classic leather", 1800.0, "Minimal Watch", 5, "img3.jpg"));
-        products.add(new Product(nextId++, "Elegant Watch", "Formal style", 2700.0, "Minimal Watch", 6, "img10.jpg"));
-        products.add(new Product(nextId++, "Matte Smart Watch", "Modern smartwatch", 3000.0, "Smart Watch", 15, "img4.jpg"));
-        products.add(new Product(nextId++, "Women's Smart Watch", "Everyday wear", 2500.0, "Smart Watch", 25, "img9.jpg"));
-        products.add(new Product(nextId++, "Men's Sports Watch", "Durable sports watch", 1200.0, "Sports Watch", 18, "img7.jpg"));
-        products.add(new Product(nextId++, "Elegant Sports Watch", "Premium design", 5000.0, "Sports Watch", 3, "img8.jpg"));
-        products.add(new Product(nextId++, "Digital Watch", "LED display", 1500.0, "Digital Watch", 20, "img6.jpg"));
-        products.add(new Product(nextId++, "Fitness Watch", "Health tracking", 2200.0, "Fitness Watch", 12, "img5.jpg"));
+        products.add(new Product(nextId++, "Minimal Watch", "Simple watch", 985.0, Minimal, 10, "img1.jpg"));
+        products.add(new Product(nextId++, "Retro Watch", "Vintage style", 1020.0, Minimal, 8, "img2.jpg"));
+        products.add(new Product(nextId++, "Classic Watch", "Classic leather", 1800.0, Minimal, 5, "img3.jpg"));
+        products.add(new Product(nextId++, "Elegant Watch", "Formal style", 2700.0, Minimal, 6, "img10.jpg"));
+        products.add(new Product(nextId++, "Matte Smart Watch", "Modern smartwatch", 3000.0, Smart, 15, "img4.jpg"));
+        products.add(new Product(nextId++, "Women's Smart Watch", "Everyday wear", 2500.0, Smart, 25, "img9.jpg"));
+        products.add(new Product(nextId++, "Men's Sports Watch", "Durable sports watch", 1200.0, Sports, 18, "img7.jpg"));
+        products.add(new Product(nextId++, "Elegant Sports Watch", "Premium design", 5000.0, Sports, 3, "img8.jpg"));
+        products.add(new Product(nextId++, "Digital Watch", "LED display", 1500.0, Digital, 20, "img6.jpg"));
+        products.add(new Product(nextId++, "Fitness Watch", "Health tracking", 2200.0, Fitness, 12, "img5.jpg"));
 
     }
 
@@ -157,10 +164,11 @@ public class ProductService {
      * Example:
      * GET /api/v1/products/category?category=Digital
      */
+
     // FILTER by category
     public List<Product> filterByCategory(String category) {
         return products.stream()
-                .filter(p -> p.getCategory().equalsIgnoreCase(category))
+                .filter(p -> p.getCategory().getName().equalsIgnoreCase(category))
                 .collect(Collectors.toList());
     }
 }
