@@ -468,3 +468,15 @@ nav ul {
 button:hover {
     animation: pulse 0.5s ease;
 }
+.thankyou-container {
+    text-align: center;
+    padding: 40px;
+}
+
+.thankyou-container h2 {
+    color: green;
+}
+
+.thankyou-container button {
+    margin: 10px;
+}

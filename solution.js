@@ -1,6 +1,4 @@
-/* ==============================
-Problem 1: Strict Type Checker
-============================== */
+/* Problem 1 */
 
 function checkVariable(input) {
     switch (typeof input) {
@@ -22,9 +20,7 @@ function checkVariable(input) {
 }
 
 
-/* ==============================
-Problem 2: Secure ID Generator
-============================== */
+/* Problem 2: */
 
 function generateIDs(count) {
     let ids = [];
@@ -41,10 +37,7 @@ function generateIDs(count) {
     return ids;
 }
 
-
-/* ==============================
-Problem 3: Functional Sum
-============================== */
+/* Problem 3: */
 
 function calculateTotal(...numbers) {
 
@@ -57,10 +50,7 @@ function calculateTotal(...numbers) {
     return numbers.reduce((total, num) => total + num, 0);
 }
 
-
-/* ==============================
-Problem 4: Leaderboard Filter
-============================== */
+/*Problem 4: */
 
 function getTopScorers(playerList) {
 
@@ -70,10 +60,7 @@ function getTopScorers(playerList) {
         .join(", ");
 }
 
-
-/* ==============================
-Problem 5: Private Inventory
-============================== */
+/* Problem 5: */
 
 class Item {
 
@@ -91,9 +78,7 @@ class Item {
 }
 
 
-/* ==============================
-Problem 6: Robust Division
-============================== */
+/* Problem 6:  */
 
 function safeDivide(a, b) {
 
@@ -117,11 +102,7 @@ function safeDivide(a, b) {
 
 }
 
-
-
-/* ==============================
-TESTS (FOR OUTPUT LIKE IMAGE)
-============================== */
+/* TESTS */
 
 console.log("=== Problem 1 Tests ===");
 
@@ -136,9 +117,7 @@ console.log(checkVariable(null));
 
 
 console.log("\n=== Problem 2 Tests ===");
-
 console.log(generateIDs(7));
-
 
 
 console.log("\n=== Problem 3 Tests ===");
@@ -160,10 +139,10 @@ try {
 console.log("\n=== Problem 4 Tests ===");
 
 let players = [
-    {name:"Alice", score:10},
-    {name:"Bob", score:5},
-    {name:"Charlie", score:9},
-    {name:"Diana", score:12}
+    {name:"kiya", score:10},
+    {name:"Ban", score:5},
+    {name:"Chris", score:9},
+    {name:"Acky", score:12}
 ];
 
 console.log(getTopScorers(players));
@@ -171,13 +150,10 @@ console.log(getTopScorers(players));
 
 
 console.log("\n=== Problem 5 Tests ===");
-
 let item = new Item("Watch",1000);
 console.log(item.finalPrice);
 
 
-
 console.log("\n=== Problem 6 Tests ===");
-
 console.log(safeDivide(10,2));
 console.log(safeDivide(10,0));
