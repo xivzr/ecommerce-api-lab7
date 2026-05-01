@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Login Page</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header>
+    <h1>Account Login</h1>
+</header>
+
+<main>
+    <section aria-labelledby="login-heading">
+        <h2 id="login-heading">Login</h2>
+
+        <form id="loginForm">
+
+            <fieldset>
+                <legend>Sign In to Your Account</legend>
+
+                <div class="input-group">
+                    <label for="username"></label>
+                    <input
+                        type="text"
+                        id="username"
+                        name="username"
+                        placeholder="Username"
+                        required>
+                </div>
+
+                <div class="input-group">
+                    <label for="password"></label>
+                    <input type="password"
+                       placeholder="Password"
+                        required>
+                </div>
+
+                <button type="submit" class="login-btn">
+                    Sign In
+                </button>
+
+            </fieldset>
+
+        </form>
+    </section>
+</main>
+
+<footer>
+    <p>
+        Don't have an account?
+        <a href="#">Sign Up</a>
+    </p>
+    <p>
+        <a href="#">Forgot Password?</a>
+    </p>
+</footer>
+
+</body>
+</html>
