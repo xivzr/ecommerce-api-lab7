@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Checkout</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header>
+  <h1>Checkout</h1>
+</header>
+
+<main class="checkout-layout">
+<section>
+  <h2>Shipping Address</h2>
+
+  <form>
+    <fieldset>
+      <label>Name:
+        <input type="text" required>
+      </label><br>
+
+      <label>Street:
+        <input type="text" required>
+      </label><br>
+
+
+    <h2>Payment Method</h2>
+
+    <label><input type="radio" name="payment" required> GCash</label><br>
+    <label><input type="radio" name="payment"> Cash on Delivery</label><br><br>
+
+    <button type="submit">Place Order</button>
+  </form>
+</section>
+
+<aside>
+  <h2>Order Summary</h2>
+  <p>Subtotal: ₱1,020</p>
+  <p>Shipping: ₱100</p>
+  <p><strong>Total: ₱1,120</strong></p>
+</aside>
+
+</main>
+
+</body>
+</html>

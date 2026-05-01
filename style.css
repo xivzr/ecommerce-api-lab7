@@ -1,0 +1,470 @@
+:root {
+    --primary-color: #111;
+    --secondary-color: #ffebcd;
+    --bg-light: #ffffe0;
+    --text-light: #ffffff;
+    --text-main: #333;
+    --border-radius: 8px;
+    --image-box-bg: #e6d8ad;
+    --card-bg: #ffffff;
+    --transition-speed: 0.35s ease-in-out;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Georgia, sans-serif;
+    background-color: var(--bg-light);
+    color: var(--text-main);
+    line-height: 1.6;
+
+    /* LAB 3 FIX: prevent horizontal scrolling */
+    overflow-x: hidden;
+}
+
+header {
+    background-color: var(--primary-color);
+    color: var(--text-light);
+    padding: 15px;
+    text-align: center;
+}
+
+h1, h2, h3 {
+    margin-bottom: 10px;
+}
+
+nav ul {
+    list-style: none;
+    margin-top: 10px;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+nav ul li {
+    display: inline;
+    margin: 0 15px;
+}
+
+nav ul li a {
+    color: white;
+    text-decoration: none;
+    padding: 6px 10px;
+    border-radius: 6px;
+    transition: background-color var(--transition-speed),
+                color var(--transition-speed),
+                transform var(--transition-speed);
+}
+
+nav ul li a:hover {
+    background-color: var(--secondary-color);
+    color: #000;
+}
+
+nav ul li a:active {
+    transform: scale(0.95);
+}
+
+/* TASK 2 (Original Layout Section) */
+
+main {
+    padding: 20px;
+}
+
+section,
+article {
+    background-color: var(--card-bg);
+    display: inline-block;
+    width: 100%;
+    padding: 20px;
+    margin: 20px auto;
+    border-radius: var(--border-radius);
+    box-shadow: 0 12px 22px #e6d8ad;
+}
+
+section,
+aside,
+fieldset,
+form {
+    background-color: var(--card-bg);
+    padding: 20px;
+    margin: 20px auto;
+    border-radius: var(--border-radius);
+    box-shadow: 0 6px 14px rgba(0,0,0,0.12);
+    transition: box-shadow var(--transition-speed),
+                transform var(--transition-speed);
+}
+
+button {
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    padding: 10px 16px;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color var(--transition-speed),
+                transform var(--transition-speed),
+                box-shadow var(--transition-speed);
+}
+
+button:hover {
+    background-color: var(--secondary-color);
+    color: #000;
+    box-shadow: 0 8px 18px rgba(0,0,0,0.25);
+}
+
+button:active {
+    transform: scale(0.95);
+}
+
+a:focus,
+button:focus,
+input:focus {
+    outline: 2px solid var(--secondary-color);
+}
+
+/
+/* TASK 3 – PRODUCT CARDS */
+
+.products-grid article {
+    display: inline-block;
+    width: 200px;
+    margin: 12px;
+    vertical-align: top;
+    text-align: center;
+    background-color: var(--image-box-bg);
+    border-radius: var(--border-radius);
+    padding: 15px;
+    transition: transform var(--transition-speed),
+                box-shadow var(--transition-speed);
+
+    /* LAB 3 Animation */
+    animation: fadeIn 0.6s ease-in-out;
+}
+
+.products-grid article:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 12px 22px rgba(0,0,0,0.25);
+}
+
+.products-grid article:nth-child(odd) {
+    background-color: #f4e7c0;
+}
+
+.products-grid article:nth-child(even) {
+    background-color: #efe1b0;
+}
+
+.products-grid img,
+section img {
+    width: 100%;
+    border-radius: 2px;
+    background-color: #fff;
+    padding: 2px;
+    transition: transform var(--transition-speed),
+                box-shadow var(--transition-speed);
+}
+
+.products-grid img:hover,
+section img:hover {
+    transform: scale(1.05);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+}
+
+section img {
+    width: 50%;
+    border-radius: 8px;
+    background-color:#f4e7c0;
+    padding: 6px;
+}
+
+/* TASK 4 */
+
+.price::before {
+    content: "₱ ";
+    font-weight: bold;
+}
+
+input:required {
+    border: 5px solid red;
+}
+
+input:valid {
+    border: 2px solid green;
+}
+
+/* TASK 5 */
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+}
+
+th, td {
+    padding: 8px;
+    border: 1px solid #ccc;
+}
+
+th {
+    background-color: var(--secondary-color);
+}
+
+td:first-child {
+    font-weight: bold;
+}
+
+/* LAB 3 SECTION START */
+
+
+/* LAB 3 TASK 2: HEADER FLEXBOX (MOBILE FIRST) */
+
+header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+header article img {
+    width: 50px;
+}
+
+
+/* LAB 3 TASK 7: KEYFRAMES ANIMATION *
+
+@keyframes fadeIn {
+
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+}
+
+/* button pulse animation */
+
+button:hover {
+    animation: pulse 0.6s ease;
+}
+
+@keyframes pulse {
+
+    0% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+    100% { transform: scale(1); }
+
+}
+
+
+/* LAB 3 TASK 1: TABLET BREAKPOINT */
+/* 481px – 768px */
+
+@media (min-width:481px) {
+
+    nav ul {
+        justify-content: center;
+    }
+
+    .products-grid {
+
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px;
+
+    }
+
+}
+
+/* LAB 3 TASK 1: DESKTOP BREAKPOINT */
+/* 769px – 1280px */
+
+@media (min-width:769px) {
+
+    header {
+
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+
+    }
+
+    nav ul {
+
+        justify-content: flex-end;
+
+    }
+
+    main {
+
+        max-width: 1200px;
+        margin: auto;
+
+    }
+
+    .products-grid {
+
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 25px;
+
+    }
+
+}
+/* LAB 3 : RESPONSIVE DESIGN (MOBILE FIRST) */
+
+/* GLOBAL RESPONSIVE MEDIA */
+
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+/*  HEADER FLEXBOX  */
+
+header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+nav ul {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+
+/*  HERO SECTION CENTER */
+
+.hero {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    min-height: 250px;
+}
+
+/*  PRODUCT GRID (MOBILE FIRST) */
+
+.products-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 20px;
+}
+
+/*  CART ITEMS FLEX */
+
+.cart-items li {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+
+    background: white;
+    padding: 15px;
+    border-radius: 8px;
+
+    box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+}
+
+/*  TABLE RESPONSIVE  */
+
+.table-container {
+    overflow-x: auto;
+}
+
+/*  PRODUCT PAGE LAYOUT  */
+
+.product-layout {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+/* TABLET BREAKPOINT
+481px – 768px*/
+
+@media (min-width: 481px) {
+
+.products-grid {
+    grid-template-columns: repeat(2, 1fr);
+}
+
+nav ul {
+    flex-direction: row;
+}
+
+}
+
+/*DESKTOP BREAKPOINT
+769px – 1280px*/
+
+@media (min-width: 769px) {
+
+header {
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+nav ul {
+    flex-direction: row;
+}
+
+/* PRODUCT GRID DESKTOP */
+
+.products-grid {
+    grid-template-columns: repeat(4, minmax(200px,1fr));
+}
+
+/* SIDEBAR LAYOUT */
+
+.product-layout {
+    display: grid;
+    grid-template-columns: 1fr 4fr;
+}
+
+/* CHECKOUT LAYOUT */
+
+.checkout-layout {
+    display: flex;
+    gap: 30px;
+}
+
+}
+
+/* ANIMATIONS */
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.products-grid article {
+    animation: fadeIn 0.6s ease forwards;
+}
+
+/* BUTTON PULSE */
+
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.08); }
+    100% { transform: scale(1); }
+}
+
+button:hover {
+    animation: pulse 0.5s ease;
+}
