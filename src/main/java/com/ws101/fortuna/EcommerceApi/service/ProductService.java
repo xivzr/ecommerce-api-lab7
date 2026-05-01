@@ -1,11 +1,8 @@
 package com.ws101.fortuna.EcommerceApi.service;
 
-import com.ws101.fortuna.EcommerceApi.model.Category;
 import com.ws101.fortuna.EcommerceApi.model.Product;
 import com.ws101.fortuna.EcommerceApi.repository.ProductRepository;
-import com.ws101.fortuna.EcommerceApi.repository.CategoryRepository;
 import jakarta.persistence.EntityNotFoundException;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -51,8 +48,26 @@ public class ProductService {
         return productRepository.save(existing);
     }
 
+    //patch
+    public Product patchProduct(Long id, Product product) {
+        Product existing = productRepository.findById(id)
+                .orElseThrow(() -> new EntityNotFoundException("Product not found"));
+
+        if (product.getName() != null) existing.setName(product.getName());
+        if (product.getDescription() != null) existing.setDescription(product.getDescription());
+        if (product.getPrice() != null) existing.setPrice(product.getPrice());
+        if (product.getCategory() != null) existing.setCategory(product.getCategory());
+        if (product.getStockQuantity() != null) existing.setStockQuantity(product.getStockQuantity());
+        if (product.getImageUrl() != null) existing.setImageUrl(product.getImageUrl());
+
+        return productRepository.save(existing);
+    }
+
     // DELETE product
     public void deleteProduct(Long id) {
+        if (!productRepository.existsById(id)) {
+            throw new EntityNotFoundException("Product not found");
+        }
         productRepository.deleteById(id);
     }
 
