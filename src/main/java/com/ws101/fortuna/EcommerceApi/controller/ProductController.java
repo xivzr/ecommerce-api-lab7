@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.*;
+
 import jakarta.validation.Valid;
 
 import java.util.List;
@@ -34,7 +35,7 @@ import java.util.List;
  * Uses ProductService for business logic and returns
  * appropriate HTTP responses.
  *
- *gig
+ *gi
  */
 public class ProductController {
 
@@ -185,15 +186,10 @@ public class ProductController {
 
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> deleteProduct(@PathVariable Long id) {
-        Product product = productService.getProductById(id); //new added
 
-        boolean deleted = productService.deleteProduct(id);
+        productService.deleteProduct(id);
 
-        if (deleted) {
-            return ResponseEntity.ok().build(); // 204 No Content  //200k updated //.no content() to .ok()
-        } else {
-            return ResponseEntity.notFound().build();
-        }
+        return ResponseEntity.noContent().build();
     }
     //  FILTER PRODUCTS BY CATEGORY
     // Endpoint: GET /api/v1/products/filter?category=Sports Watch
@@ -208,7 +204,14 @@ public class ProductController {
     public ResponseEntity<List<Product>> filterProducts(
             @RequestParam String category) {
 
-        List<Product> products = productService.filterByCategory(category);
+        List<Product> products = productService. filterByCategory(category);
         return ResponseEntity.ok(products);
+    }
+    @GetMapping("/price")
+    public ResponseEntity<List<Product>> filterByPrice(
+            @RequestParam Double min,
+            @RequestParam Double max) {
+
+        return ResponseEntity.ok(productService.filterByPrice(min, max));
     }
 }
