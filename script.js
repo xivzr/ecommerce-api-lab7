@@ -225,6 +225,7 @@ if (form) {
     });
 }
 
+
 // TASK 5: USER ACCOUNT
 
 const currentUser = {
